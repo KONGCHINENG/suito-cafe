@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suito Dessert &amp; Coffee · Ipoh</title>
+  <meta name="description" content="Suito Dessert & Coffee, Ipoh — signature Ox Latte, 12 kinds of matcha, pistachio drinks, Callebaut chocolate, butter buns, Angus beef burgers and Korean fried chicken. Open nightly 7pm–3am (4am Fri & Sat). WhatsApp 017-490 4254." />
+  <meta name="theme-color" content="#2b1d16" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cocoa: #2b1d16;
+      --cocoa-soft: #4a3529;
+      --muted: #6e5b4e;
+      --milk: #fbf7f0;
+      --cream: #f4ecdf;
+      --line: #e6dac6;
+      --matcha: #4f6b2f;
+      --matcha-deep: #34481d;
+      --pistachio: #dfe8c9;
+      --berry: #c9555a;
+      --berry-soft: #f6d9d6;
+      --caramel: #c98a4b;
+      --white: #ffffff;
+      --radius: 22px;
+      --shadow: 0 24px 48px -28px rgba(43, 29, 22, .45);
+      --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+      --font-body: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color-scheme: light;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      margin: 0; background: var(--milk); color: var(--cocoa);
+      font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img, svg { display: block; }
+    :focus-visible { outline: 3px solid var(--berry); outline-offset: 3px; border-radius: 10px; }
+    .wrap { width: min(1160px, 100% - 32px); margin-inline: auto; }
+    .icon { width: 20px; height: 20px; flex-shrink: 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.06; margin: 0; letter-spacing: -.01em; }
+    h1 em, h2 em { font-style: italic; font-weight: 500; color: var(--matcha); }
+    h2 { font-size: clamp(2.1rem, 4.6vw, 3.25rem); text-wrap: balance; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;
+      font-size: .78rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--matcha);
+    }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--berry); }
+    section { padding: clamp(72px, 10vw, 120px) 0; }
+    .section-head { max-width: 640px; margin-bottom: 48px; }
+    .section-head p { color: var(--muted); margin: 16px 0 0; font-size: 1.08rem; }
+    .center { text-align: center; margin-inline: auto; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 50px; padding: 0 24px; border-radius: 999px; border: 2px solid transparent;
+      font: 700 1rem/1 var(--font-body); text-decoration: none; cursor: pointer;
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--matcha); color: var(--white); box-shadow: 0 14px 28px -16px rgba(52, 72, 29, .9); }
+    .btn-primary:hover { background: var(--matcha-deep); }
+    .btn-outline { border-color: var(--cocoa); color: var(--cocoa); }
+    .btn-outline:hover { background: var(--cocoa); color: var(--milk); }
+    .btn-light { background: var(--milk); color: var(--cocoa); }
+    .btn-light:hover { background: var(--white); }
+    .btn-ghost-light { border-color: rgba(251, 247, 240, .6); color: var(--milk); }
+    .btn-ghost-light:hover { background: var(--milk); color: var(--cocoa); border-color: var(--milk); }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(251, 247, 240, .86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent; transition: border-color .25s ease;
+    }
+    .site-header.scrolled { border-bottom-color: var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+    .brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+    .brand b { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; font-style: italic; letter-spacing: -.02em; }
+    .brand b span { color: var(--berry); }
+    .brand small { font-size: .7rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a:not(.btn) {
+      display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px;
+      font-weight: 600; text-decoration: none; color: var(--cocoa-soft); transition: background-color .2s ease;
+    }
+    .nav-links a:not(.btn):hover { background: var(--cream); }
+    .nav-links .btn { min-height: 44px; padding: 0 20px; margin-left: 8px; }
+    @media (max-width: 760px) {
+      .nav-links li:not(:last-child) { display: none; }
+      .brand small { display: none; }
+    }
+
+    /* Hero */
+    .hero { padding: clamp(40px, 7vw, 88px) 0 clamp(64px, 8vw, 104px); position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: clamp(32px, 5vw, 72px); }
+    .hero h1 { font-size: clamp(2.9rem, 7.4vw, 5.6rem); line-height: .98; letter-spacing: -.025em; }
+    .hero-lead { font-size: clamp(1.08rem, 1.7vw, 1.22rem); color: var(--cocoa-soft); max-width: 520px; margin: 24px 0 32px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 28px; margin: 44px 0 0; padding: 24px 0 0; border-top: 1px solid var(--line); list-style: none; }
+    .hero-facts li { display: grid; gap: 2px; }
+    .hero-facts b { font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; line-height: 1; }
+    .hero-facts span { font-size: .9rem; color: var(--muted); }
+
+    .hero-art { position: relative; aspect-ratio: 1 / 1.05; max-width: 500px; width: 100%; justify-self: center; }
+    .hero-blob {
+      position: absolute; inset: 6% 2% 4% 4%; border-radius: 46% 54% 44% 56% / 52% 44% 56% 48%;
+      background: radial-gradient(circle at 30% 25%, #eef3dd, var(--pistachio) 60%, #cfdcb0);
+    }
+    .hero-cup { position: absolute; left: 22%; top: 8%; width: 52%; filter: drop-shadow(0 30px 30px rgba(43, 29, 22, .22)); }
+    .hero-bun { position: absolute; right: 2%; bottom: 10%; width: 34%; filter: drop-shadow(0 20px 20px rgba(43, 29, 22, .25)); }
+    .sticker {
+      position: absolute; left: 0; bottom: 14%; width: 132px; height: 132px; border-radius: 50%;
+      display: grid; place-items: center; text-align: center; padding: 16px;
+      background: var(--berry); color: var(--white); transform: rotate(-10deg); box-shadow: var(--shadow);
+      font-family: var(--font-display); font-style: italic; font-size: 1.05rem; line-height: 1.15;
+    }
+    .sticker small { display: block; font-family: var(--font-body); font-style: normal; font-size: .64rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; margin-top: 6px; opacity: .9; }
+    .float { animation: float 6s ease-in-out infinite; }
+    .float-slow { animation: float 8s ease-in-out infinite reverse; }
+    @keyframes float { 50% { transform: translateY(-12px); } }
+    @media (max-width: 880px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-art { max-width: 300px; }
+      .sticker { width: 108px; height: 108px; font-size: .92rem; }
+    }
+
+    /* Flavour ribbon */
+    .ribbon { background: var(--cocoa); color: var(--milk); overflow: hidden; padding: 18px 0; }
+    .ribbon-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+    .ribbon-track ul { display: flex; gap: 36px; padding: 0 18px; margin: 0; list-style: none; }
+    .ribbon-track li { display: flex; align-items: center; gap: 36px; font-family: var(--font-display); font-style: italic; font-size: 1.35rem; white-space: nowrap; }
+    .ribbon-track li::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--caramel); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* Signatures */
+    .sig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .sig-card {
+      position: relative; display: flex; flex-direction: column; border-radius: var(--radius); overflow: hidden;
+      background: var(--white); border: 1px solid var(--line); transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .sig-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .sig-visual { display: grid; place-items: center; aspect-ratio: 1 / .9; background: var(--bg); }
+    .sig-visual svg { width: 52%; height: auto; filter: drop-shadow(0 16px 16px rgba(43, 29, 22, .18)); }
+    .sig-body { padding: 20px 22px 24px; display: grid; gap: 8px; flex: 1; align-content: start; }
+    .sig-tag { font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--matcha); }
+    .sig-body h3 { font-size: 1.4rem; }
+    .sig-body p { margin: 0; color: var(--muted); font-size: .96rem; }
+    .sig-price { font-weight: 800; font-size: 1.05rem; margin-top: 6px; }
+    @media (max-width: 980px) { .sig-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .sig-grid { grid-template-columns: 1fr; } }
+
+    /* Matcha bar */
+    .matcha { background: var(--matcha-deep); color: var(--milk); position: relative; overflow: hidden; }
+    .matcha::before {
+      content: ""; position: absolute; width: 640px; height: 640px; right: -220px; top: -260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(223, 232, 201, .16), transparent 65%);
+    }
+    .matcha .eyebrow { color: var(--pistachio); }
+    .matcha h2 em { color: var(--pistachio); }
+    .matcha-grid { position: relative; display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+    .matcha p.lead { color: rgba(251, 247, 240, .82); font-size: 1.08rem; margin: 18px 0 28px; max-width: 460px; }
+    .flavours { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 0; }
+    .flavours li {
+      display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border-radius: 999px;
+      background: rgba(251, 247, 240, .08); border: 1px solid rgba(251, 247, 240, .18); font-weight: 600;
+    }
+    .flavours li i { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 2px rgba(255,255,255,.25); }
+    .flavours li span { color: rgba(251, 247, 240, .7); font-weight: 500; font-size: .9rem; }
+    @media (max-width: 880px) { .matcha-grid { grid-template-columns: 1fr; } }
+
+    /* Menu */
+    .menu { background: var(--cream); }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .tab {
+      min-height: 46px; padding: 0 22px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--milk);
+      font: 700 .98rem/1 var(--font-body); color: var(--cocoa-soft); cursor: pointer;
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .tab:hover { border-color: var(--cocoa); }
+    .tab[aria-selected="true"] { background: var(--cocoa); border-color: var(--cocoa); color: var(--milk); }
+    .tab small { font-weight: 600; opacity: .65; margin-left: 4px; }
+    .menu-panel { columns: 3 300px; column-gap: 20px; }
+    .menu-panel[hidden] { display: none; }
+    .menu-group {
+      break-inside: avoid; margin: 0 0 20px; padding: 24px 24px 18px; border-radius: var(--radius);
+      background: var(--milk); border: 1px solid var(--line);
+    }
+    .menu-group h3 { font-size: 1.45rem; margin-bottom: 4px; }
+    .menu-group .note { margin: 0 0 10px; font-size: .88rem; color: var(--muted); }
+    .menu-list { list-style: none; margin: 8px 0 0; padding: 0; }
+    .menu-list li { padding: 10px 0; border-top: 1px dashed var(--line); }
+    .menu-list li:first-child { border-top: 0; }
+    .item-row { display: flex; align-items: baseline; gap: 12px; }
+    .item-row b { font-weight: 600; flex: 1; }
+    .item-row span { font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .item-row span.ask { font-weight: 600; color: var(--muted); font-size: .9rem; }
+    .menu-list p { margin: 2px 0 0; font-size: .88rem; color: var(--muted); }
+    .badge {
+      display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; vertical-align: 2px;
+      background: var(--berry-soft); color: #8f2f35; font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .menu-foot { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .94rem; }
+
+    /* Why */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .why { padding: 32px 28px; border-radius: var(--radius); background: var(--white); border: 1px solid var(--line); }
+    .why-icon { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; background: var(--bg); color: var(--cocoa); margin-bottom: 20px; }
+    .why-icon svg { width: 26px; height: 26px; }
+    .why h3 { font-size: 1.35rem; margin-bottom: 8px; }
+    .why p { margin: 0; color: var(--muted); }
+    @media (max-width: 880px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* Visit */
+    .visit { padding-top: 0; }
+    .visit-card { display: grid; grid-template-columns: 1fr 1.15fr; border-radius: 28px; overflow: hidden; background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .visit-info { padding: clamp(28px, 4.5vw, 52px); }
+    .visit-list { list-style: none; padding: 0; margin: 28px 0 32px; display: grid; gap: 18px; }
+    .visit-list li { display: flex; gap: 16px; align-items: flex-start; }
+    .visit-list .ic { width: 44px; height: 44px; border-radius: 14px; background: var(--cream); display: grid; place-items: center; flex-shrink: 0; color: var(--matcha); }
+    .visit-list b { display: block; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .visit-list a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; font-size: 1.08rem; text-decoration-color: var(--line); text-underline-offset: 4px; }
+    .visit-list a:hover { text-decoration-color: currentColor; }
+    .hours { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; min-width: 210px; }
+    .hours li { display: flex; justify-content: space-between; gap: 24px; font-weight: 700; font-size: 1.04rem; }
+    .hours li span:first-child { font-weight: 500; color: var(--cocoa-soft); }
+    .visit-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .map { min-height: 420px; background: var(--cream); }
+    .map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; display: block; }
+    @media (max-width: 880px) { .visit-card { grid-template-columns: 1fr; } .map, .map iframe { min-height: 320px; } }
+
+    /* CTA band */
+    .cta { padding: 0 0 clamp(72px, 10vw, 120px); }
+    .cta-box {
+      position: relative; overflow: hidden; border-radius: 32px; padding: clamp(40px, 7vw, 80px) clamp(24px, 6vw, 72px);
+      background: var(--cocoa); color: var(--milk); display: grid; grid-template-columns: 1.4fr auto; gap: 32px; align-items: center;
+    }
+    .cta-box::after {
+      content: ""; position: absolute; width: 360px; height: 360px; right: -120px; bottom: -180px; border-radius: 50%;
+      background: var(--berry); opacity: .35; filter: blur(10px);
+    }
+    .cta-box h2 em { color: var(--berry-soft); }
+    .cta-box p { margin: 14px 0 0; color: rgba(251, 247, 240, .78); font-size: 1.08rem; max-width: 520px; }
+    .cta-actions { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 12px; }
+    @media (max-width: 760px) { .cta-box { grid-template-columns: 1fr; } .cta-actions { flex-direction: row; flex-wrap: wrap; } }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 36px 0 110px; color: var(--muted); font-size: .94rem; }
+    .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .socials { display: flex; gap: 10px; }
+    .socials a {
+      width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line);
+      color: var(--cocoa); transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .socials a:hover { background: var(--cocoa); color: var(--milk); border-color: var(--cocoa); }
+    @media (min-width: 761px) { footer { padding-bottom: 40px; } }
+
+    /* Floating WhatsApp (mobile) */
+    .fab {
+      position: fixed; right: 16px; bottom: 16px; z-index: 60; display: none; align-items: center; gap: 10px;
+      min-height: 54px; padding: 0 22px 0 18px; border-radius: 999px; background: #1f8f4e; color: var(--white);
+      font-weight: 800; text-decoration: none; box-shadow: 0 16px 32px -12px rgba(0, 0, 0, .45);
+    }
+    .fab .icon { width: 24px; height: 24px; }
+    @media (max-width: 760px) {
+      .fab { display: inline-flex; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+      .fab.show { opacity: 1; transform: none; pointer-events: auto; }
+    }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .float, .float-slow, .ribbon-track { animation: none; }
+      .btn, .sig-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Icon + illustration sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <clipPath id="glass-clip"><path d="M18 30 H102 L91 152 Q90 158 84 158 H36 Q30 158 29 152 Z"/></clipPath>
+    </defs>
+    <symbol id="cup" viewBox="0 0 120 170">
+      <path d="M76 2 L66 120" stroke="var(--straw, #c9555a)" stroke-width="7" stroke-linecap="round"/>
+      <g clip-path="url(#glass-clip)">
+        <rect x="0" y="0" width="120" height="170" fill="#ffffff" opacity=".55"/>
+        <path d="M0 44 Q30 38 60 44 T120 44 V170 H0 Z" fill="var(--l3)"/>
+        <path d="M0 78 Q30 70 60 78 T120 78 V170 H0 Z" fill="var(--l2)"/>
+        <path d="M0 116 Q30 108 60 116 T120 116 V170 H0 Z" fill="var(--l1)"/>
+        <rect x="32" y="52" width="22" height="20" rx="5" fill="#fff" opacity=".45" transform="rotate(-12 43 62)"/>
+        <rect x="62" y="60" width="20" height="18" rx="5" fill="#fff" opacity=".4" transform="rotate(14 72 69)"/>
+        <rect x="44" y="88" width="18" height="17" rx="5" fill="#fff" opacity=".3" transform="rotate(8 53 96)"/>
+        <rect x="22" y="30" width="8" height="128" fill="#fff" opacity=".35"/>
+      </g>
+      <path d="M18 30 H102 L91 152 Q90 158 84 158 H36 Q30 158 29 152 Z" fill="none" stroke="#2b1d16" stroke-opacity=".18" stroke-width="2"/>
+      <rect x="12" y="24" width="96" height="8" rx="4" fill="#2b1d16" opacity=".12"/>
+    </symbol>
+    <symbol id="bun" viewBox="0 0 140 110">
+      <ellipse cx="70" cy="98" rx="58" ry="8" fill="#2b1d16" opacity=".12"/>
+      <path d="M14 82 Q10 30 70 22 Q130 30 126 82 Q126 94 112 94 H28 Q14 94 14 82 Z" fill="#e3a865"/>
+      <path d="M22 58 Q26 28 70 24 Q114 28 118 58 Q112 66 104 60 Q98 72 88 62 Q80 74 70 62 Q60 74 52 62 Q42 72 36 60 Q28 66 22 58 Z" fill="var(--glaze, #5a3220)"/>
+      <path d="M40 40 Q52 32 66 32" stroke="#fff" stroke-opacity=".45" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <circle cx="56" cy="46" r="3" fill="var(--sprinkle, #dfe8c9)"/><circle cx="78" cy="40" r="3" fill="var(--sprinkle, #dfe8c9)"/>
+      <circle cx="92" cy="50" r="3" fill="var(--sprinkle, #dfe8c9)"/><circle cx="70" cy="52" r="2.5" fill="var(--sprinkle, #dfe8c9)"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36A9.43 9.43 0 0 1 2.62 12c0-5.2 4.24-9.44 9.44-9.44a9.38 9.38 0 0 1 6.67 2.77 9.38 9.38 0 0 1 2.76 6.68c0 5.2-4.24 9.44-9.44 9.44m8.03-17.47A11.3 11.3 0 0 0 12.05.7C5.8.7.7 5.78.7 12.04c0 2 .52 3.95 1.52 5.67L.6 23.6l6.02-1.58a11.3 11.3 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.34-11.34 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 22v-8.1h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.5 1.6-1.5h1.7V4.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.6v3.2h2.8V22h3.1Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/></symbol>
+    <symbol id="i-cake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20M7 8v3M12 8v3M17 8v3M7 4h.01M12 4h.01M17 4h.01"/></symbol>
+    <symbol id="i-utensils" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+  </svg>
+
+  <a class="sr-only" href="#menu">Skip to menu</a>
+
+  <header class="site-header" id="top">
+    <nav class="wrap nav" aria-label="Main">
+      <a class="brand" href="#top" aria-label="Suito Dessert and Coffee, home">
+        <b>suito<span>.</span></b><small>Dessert &amp; Coffee</small>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#signatures">Signatures</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a class="btn btn-primary" href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Late-night Dessert &amp; Coffee · Ipoh</span>
+          <h1>Sweet things,<br><em>late nights.</em></h1>
+          <p class="hero-lead">Signature Ox Latte, twelve kinds of matcha, Callebaut chocolate and warm butter buns. Plus proper comfort food, from Angus beef burgers to Korean fried chicken. Open from 7pm till 3am every night, so pull up a chair and stay a while.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Contact us on WhatsApp</a>
+            <a class="btn btn-outline" href="#menu">See the menu <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <ul class="hero-facts">
+            <li><b>90+</b><span>drinks &amp; bites</span></li>
+            <li><b>12</b><span>ways to matcha</span></li>
+            <li><b>Till 3am</b><span>open every night</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-blob"></div>
+          <svg class="hero-cup float" viewBox="0 0 120 170" style="--l1:#e98a8f;--l2:#fbf4e8;--l3:#7d9a46"><use href="#cup"/></svg>
+          <svg class="hero-bun float-slow" viewBox="0 0 140 110"><use href="#bun"/></svg>
+          <div class="sticker"><div>Not too sweet, just suito<small>Ipoh · Perak</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon-track">
+        <ul><li>Ox Latte</li><li>Hojicha Brown Sugar</li><li>Pistachio</li><li>Callebaut</li><li>Lotus Biscoff</li><li>Yuzu Matcha</li><li>Taro Strawberry</li><li>White Peach Oolong</li><li>Butter Buns</li></ul>
+        <ul><li>Ox Latte</li><li>Hojicha Brown Sugar</li><li>Pistachio</li><li>Callebaut</li><li>Lotus Biscoff</li><li>Yuzu Matcha</li><li>Taro Strawberry</li><li>White Peach Oolong</li><li>Butter Buns</li></ul>
+      </div>
+    </div>
+
+    <section id="signatures">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">House signatures</span>
+          <h2>Start with <em>the ones we're known for</em></h2>
+          <p>First visit? These four are the safest bet, and the reason most people come back.</p>
+        </div>
+        <div class="sig-grid">
+          <article class="sig-card reveal" style="--bg:#efe2d0">
+            <div class="sig-visual"><svg viewBox="0 0 120 170" aria-hidden="true" style="--l1:#5a3626;--l2:#c9a27e;--l3:#f7ecdc;--straw:#2b1d16"><use href="#cup"/></svg></div>
+            <div class="sig-body">
+              <span class="sig-tag">Coffee</span>
+              <h3>Signature Suito Ox Latte</h3>
+              <p>Our house latte, smooth and rich. The one to order first.</p>
+              <span class="sig-price">RM 12</span>
+            </div>
+          </article>
+          <article class="sig-card reveal" style="--bg:#f1e4cf">
+            <div class="sig-visual"><svg viewBox="0 0 120 170" aria-hidden="true" style="--l1:#7a4a22;--l2:#c79a6a;--l3:#fbf2e4;--straw:#c98a4b"><use href="#cup"/></svg></div>
+            <div class="sig-body">
+              <span class="sig-tag">Non-coffee</span>
+              <h3>Hojicha Brown Sugar</h3>
+              <p>Roasted green tea, milk and slow-melted brown sugar. Toasty, mellow, cosy.</p>
+              <span class="sig-price">RM 10</span>
+            </div>
+          </article>
+          <article class="sig-card reveal" style="--bg:var(--pistachio)">
+            <div class="sig-visual"><svg viewBox="0 0 120 170" aria-hidden="true" style="--l1:#a8c47a;--l2:#fbf4e8;--l3:#5f7e2f;--straw:#4f6b2f"><use href="#cup"/></svg></div>
+            <div class="sig-body">
+              <span class="sig-tag">Pistachio</span>
+              <h3>Pistachio Matcha</h3>
+              <p>Nutty pistachio cream under a layer of earthy matcha. Our most photographed glass.</p>
+              <span class="sig-price">RM 15</span>
+            </div>
+          </article>
+          <article class="sig-card reveal" style="--bg:var(--berry-soft)">
+            <div class="sig-visual"><svg viewBox="0 0 140 110" aria-hidden="true" style="--glaze:#4a2618;--sprinkle:#f6d9d6"><use href="#bun"/></svg></div>
+            <div class="sig-body">
+              <span class="sig-tag">Butter bun</span>
+              <h3>Callebaut Chocolate Butter Bun</h3>
+              <p>Soft, buttery bun loaded with Belgian Callebaut chocolate. Made for sharing (or not).</p>
+              <span class="sig-price">RM 22</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="matcha" aria-labelledby="matcha-title">
+      <div class="wrap matcha-grid">
+        <div class="reveal">
+          <span class="eyebrow">The matcha bar</span>
+          <h2 id="matcha-title">Twelve ways<br>to <em>matcha.</em></h2>
+          <p class="lead">Classic and creamy, or paired with fruit, nuts and flowers. Every matcha is RM12 to RM14. Not a matcha person? Try the hojicha or the taro.</p>
+          <a class="btn btn-light" href="#menu" data-open-tab="drinks">Browse all drinks <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <ul class="flavours reveal" aria-label="Matcha flavours">
+          <li><i style="--c:#7d9a46"></i>Matcha <span>RM12</span></li>
+          <li><i style="--c:#a07040"></i>Hojicha Brown Sugar <span>RM12</span></li>
+          <li><i style="--c:#f3ead8"></i>Creamy Matcha <span>RM14</span></li>
+          <li><i style="--c:#f0f0e6"></i>Coconut Matcha <span>RM13</span></li>
+          <li><i style="--c:#e98a8f"></i>Strawberry Matcha <span>RM13</span></li>
+          <li><i style="--c:#f2b33d"></i>Mango Matcha <span>RM13</span></li>
+          <li><i style="--c:#b49ad1"></i>Taro Matcha <span>RM13</span></li>
+          <li><i style="--c:#c8955c"></i>Peanut Matcha <span>RM13</span></li>
+          <li><i style="--c:#e9a9c0"></i>Rose Matcha <span>RM13</span></li>
+          <li><i style="--c:#f4d84a"></i>Yuzu Matcha <span>RM13</span></li>
+          <li><i style="--c:#6d74c4"></i>Blueberry Matcha <span>RM13</span></li>
+          <li><i style="--c:#5a3626"></i>Chocolate Matcha <span>RM13</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Full menu</span>
+          <h2 id="menu-title">Everything on <em>the counter</em></h2>
+          <p>Coffee, chocolate, matcha, frappes and fruity coolers, plus butter buns and hearty mains when you're properly hungry.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Menu sections" id="menu-tabs"></div>
+        <div id="menu-panels"></div>
+
+        <div class="menu-foot">
+          <span>Prices in RM. Menu and prices may change, so drop us a message to check.</span>
+          <a class="btn btn-outline" href="https://wa.me/60174904254?text=Hi%20Suito!%20I%27d%20like%20to%20ask%20about%20the%20menu." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Ask about the menu</a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Why Suito</span>
+          <h2 id="why-title">A dessert café that <em>also feeds you properly</em></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why reveal">
+            <div class="why-icon" style="--bg:var(--pistachio)"><svg aria-hidden="true"><use href="#i-leaf"/></svg></div>
+            <h3>Drinks with range</h3>
+            <p>Espresso classics, Callebaut chocolate, matcha, hojicha, pistachio, oolong and ten blended frappes.</p>
+          </div>
+          <div class="why reveal">
+            <div class="why-icon" style="--bg:var(--berry-soft)"><svg aria-hidden="true"><use href="#i-cake"/></svg></div>
+            <h3>Sweet, not sugary</h3>
+            <p>Butter buns in six flavours and desserts that are rich without being cloying.</p>
+          </div>
+          <div class="why reveal">
+            <div class="why-icon" style="--bg:#efe2d0"><svg aria-hidden="true"><use href="#i-utensils"/></svg></div>
+            <h3>Real food too</h3>
+            <p>Australian Angus burgers, Korean fried chicken, char kuey teow, pan mee and ramen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="wrap">
+        <div class="visit-card reveal">
+          <div class="visit-info">
+            <span class="eyebrow">Come by</span>
+            <h2 id="visit-title">Find us <em>in Ipoh</em></h2>
+            <ul class="visit-list">
+              <li>
+                <span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
+                <div><b>Location</b><a href="https://maps.app.goo.gl/gC7Jd3NkMab5ht1R8" target="_blank" rel="noopener">Suito Cafe, Ipoh, Perak</a></div>
+              </li>
+              <li>
+                <span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+                <div><b>WhatsApp</b><a href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener">017-490 4254</a></div>
+              </li>
+              <li>
+                <span class="ic"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
+                <div><b>Opening hours</b>
+                  <ul class="hours">
+                    <li><span>Sun – Thu</span><span>7pm – 3am</span></li>
+                    <li><span>Fri &amp; Sat</span><span>7pm – 4am</span></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <div class="visit-ctas">
+              <a class="btn btn-primary" href="https://maps.app.goo.gl/gC7Jd3NkMab5ht1R8" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Get directions</a>
+              <a class="btn btn-outline" href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Contact us</a>
+            </div>
+          </div>
+          <div class="map">
+            <iframe title="Map showing Suito Cafe in Ipoh" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=4.5756582,101.1093115&z=16&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-box reveal">
+          <div>
+            <h2 id="cta-title">Craving something <em>suito?</em></h2>
+            <p>Open 7pm till 3am (4am on Fridays &amp; Saturdays). Message us to check what's fresh tonight, ask about a big group order, or plan your next late-night catch-up.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-light" href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Contact us</a>
+            <a class="btn btn-ghost-light" href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 017-490 4254</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <a class="brand" href="#top" aria-label="Back to top"><b>suito<span>.</span></b><small>Dessert &amp; Coffee · Ipoh</small></a>
+      <div class="socials">
+        <a href="https://www.instagram.com/suito.my/" target="_blank" rel="noopener" aria-label="Suito on Instagram"><svg class="icon" aria-hidden="true"><use href="#i-insta"/></svg></a>
+        <a href="https://www.facebook.com/p/Suito-Dessert-Coffee-61558005417666/" target="_blank" rel="noopener" aria-label="Suito on Facebook"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></a>
+        <a href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener" aria-label="Chat with Suito on WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+      </div>
+      <span>© <span id="year">2026</span> Suito Dessert &amp; Coffee</span>
+    </div>
+  </footer>
+
+  <a class="fab" href="https://wa.me/60174904254?text=Hi%20Suito!%20" target="_blank" rel="noopener" aria-label="Contact Suito on WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Contact us</a>
+
+  <script>
+    // Menu data (from Suito's menu). Price null = ask in store.
+    const MENU = [
+      { id: "drinks", label: "Drinks", groups: [
+        { name: "Espresso & Coffee", items: [
+          ["Signature Suito Ox Latte", 12, "", true], ["Asian Dolce Latte", 11], ["Caramel Macchiato", 12], ["Coconut Latte", 12],
+          ["Cappuccino", 11], ["Vanilla Latte", 11], ["Mocha", 10], ["Latte", 9], ["Americano", 8], ["Espresso", 5] ] },
+        { name: "Chocolate", items: [
+          ["Suito Signature Chocolate", 13, "", true], ["Caramel Chocolate", 13], ["Hazelnut Chocolate", 13], ["Roasted Almond Chocolate", 14],
+          ["Double Chocolate", 14], ["Strawberry Chocolate", 14], ["Callebaut Chocolate", 14] ] },
+        { name: "Matcha", items: [
+          ["Hojicha Brown Sugar", 12], ["Matcha", 12], ["Creamy Matcha", 14], ["Coconut Matcha", 13], ["Strawberry Matcha", 13],
+          ["Mango Matcha", 13], ["Taro Matcha", 13], ["Peanut Matcha", 13], ["Rose Matcha", 13], ["Yuzu Matcha", 13],
+          ["Blueberry Matcha", 13], ["Chocolate Matcha", 13] ] },
+        { name: "Pistachio", items: [ ["Pistachio Matcha", 15, "", true], ["Pistachio Coconut", 15], ["Pistachio Latte", 14] ] },
+        { name: "Non-Coffee", items: [
+          ["Signature Hojicha Brown Sugar", 10, "", true], ["Green Tea Latte (Matcha)", 10], ["Black Tea Latte", 9], ["Strawberry Matcha", 11],
+          ["Mango Matcha", 11], ["Talok Taro Matcha", 12], ["Talok Taro", 10] ] },
+        { name: "Taro", items: [ ["Taro", 11], ["Taro Strawberry", 13] ] },
+        { name: "Tea", items: [ ["White Peach Oolong Milk Tea", 12], ["Black Tea", 9] ] },
+        { name: "Milky", items: [ ["Passion Fruit", 11], ["Butterscotch", 11], ["Caramel", 11] ] },
+        { name: "Frappe", note: "All frappes RM17", items: [
+          ["Chocolate", 17], ["Pistachio", 17], ["Salted Caramel", 17], ["Caramel Macchiato", 17], ["Matcha", 17], ["Lotus Biscoff", 17],
+          ["Mocha", 17], ["Strawberry Yogurt", 17], ["Mango Passion Yogurt", 17], ["Mix Berry Yogurt", 17] ] },
+        { name: "Refreshing", items: [
+          ["Solero Lemonade", 12], ["Passion Fruit", 12], ["Peach Fruit", 11], ["Mango", 11], ["Strawberry", 11],
+          ["Mix Berry", 11], ["Lemon Blue", 11], ["Ribena", 11], ["Salted Plum", 11] ] }
+      ]},
+      { id: "buns", label: "Butter Buns", groups: [
+        { name: "Butter Buns", note: "Soft, buttery and generously filled", items: [
+          ["Callebaut Chocolate", 22, "", true], ["Pistachio", 18], ["Butter", 18], ["Milky", 18], ["Strawberry", 18], ["Taro", 18] ] }
+      ]},
+      { id: "food", label: "Food", groups: [
+        { name: "Suito Burgers", note: "All burgers served with fries", items: [
+          ["Suito Signature Australian Angus Beef Burger", 22, "100% Australian Angus beef", true],
+          ["Signature Suito Sauce Australian Beef Burger", 17, "100% Australian beef"],
+          ["Prosperity Australian Beef Burger", 17, "100% Australian beef"],
+          ["Crispy Spicy Chicken Burger", 16] ] },
+        { name: "Korean Fried Chicken", note: "Small: 3 drumettes + 3 wingettes · Large: 6 + 6", items: [
+          ["Sweet Chili (Small)", 16], ["Sweet Chili (Large)", 29], ["Soy Garlic (Small)", 16], ["Soy Garlic (Large)", 29], ["Mix (Large)", 29] ] },
+        { name: "Long Filled Crunchy Chicken", note: "Crispy outside, creamy inside. Pick your sauce.", items: [
+          ["Signature Suito Truffle Sauce", null, "", true], ["Japanese Mentaiko Sauce", null], ["Garlic Sauce", null], ["BBQ Sauce", null] ] },
+        { name: "Char Kuey Teow (Basah)", items: [ ["Udang @ Kerang", 10], ["Smoked Duck", 15], ["Special", 19] ] },
+        { name: "Pan Mee", items: [
+          ["Dry", 15, "Egg, anchovies, minced chicken"], ["Soup", 12, "Egg, anchovies, minced chicken"] ] },
+        { name: "Korean Ramen", items: [
+          ["Soup (Spicy)", 15, "Cocktail sausage, egg, 2 mozzarella cheese slices, chicken slice"],
+          ["Maggi Curry", 10, "3 cocktail sausages, egg, 2 chicken balls, chicken slice"] ] }
+      ]},
+      { id: "extras", label: "Add-ons", groups: [
+        { name: "Add-ons", items: [
+          ["Espresso Shot (per shot)", 2], ["Whipping Cream", 2], ["Drizzle", 2], ["Caramel Syrup", 2], ["Hazelnut Syrup", 2],
+          ["Sugar Syrup", 2], ["Ice Cube", 1] ] },
+        { name: "Upsize", items: [ ["20 oz", 2] ] }
+      ]}
+    ];
+
+    const esc = s => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const tabsEl = document.getElementById("menu-tabs");
+    const panelsEl = document.getElementById("menu-panels");
+
+    MENU.forEach((sec, i) => {
+      const count = sec.groups.reduce((n, g) => n + g.items.length, 0);
+      tabsEl.insertAdjacentHTML("beforeend",
+        `<button class="tab" role="tab" id="tab-${sec.id}" aria-controls="panel-${sec.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${sec.label}<small>${count}</small></button>`);
+      const groups = sec.groups.map(g => `
+        <div class="menu-group">
+          <h3>${esc(g.name)}</h3>
+          ${g.note ? `<p class="note">${esc(g.note)}</p>` : ""}
+          <ul class="menu-list">
+            ${g.items.map(([name, price, desc, sig]) => `
+              <li>
+                <div class="item-row"><b>${esc(name)}${sig ? '<span class="badge">Signature</span>' : ""}</b>
+                  ${price == null ? '<span class="ask">Ask us</span>' : `<span>RM ${price}</span>`}</div>
+                ${desc ? `<p>${esc(desc)}</p>` : ""}
+              </li>`).join("")}
+          </ul>
+        </div>`).join("");
+      panelsEl.insertAdjacentHTML("beforeend",
+        `<div class="menu-panel" role="tabpanel" id="panel-${sec.id}" aria-labelledby="tab-${sec.id}" tabindex="0" ${i === 0 ? "" : "hidden"}>${groups}</div>`);
+    });
+
+    const tabs = [...tabsEl.querySelectorAll(".tab")];
+    function selectTab(tab, focus) {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => selectTab(tab));
+      tab.addEventListener("keydown", e => {
+        const dir = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (dir) { e.preventDefault(); selectTab(tabs[(i + dir + tabs.length) % tabs.length], true); }
+      });
+    });
+    document.querySelectorAll("[data-open-tab]").forEach(a =>
+      a.addEventListener("click", () => selectTab(document.getElementById("tab-" + a.dataset.openTab))));
+
+    // Header border on scroll
+    const header = document.querySelector(".site-header");
+    const fab = document.querySelector(".fab");
+    const onScroll = () => {
+      header.classList.toggle("scrolled", scrollY > 8);
+      fab.classList.toggle("show", scrollY > 600);
+    };
+    addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+    // Scroll reveal
+    const io = "IntersectionObserver" in window && new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
